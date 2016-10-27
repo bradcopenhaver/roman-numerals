@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
     var inputNumber = $("#inputNumber").val();
-    var outputString = converter(inputNumber);
+    var outputString = checker(inputNumber);
     $("#output").text(outputString);
   });
 });
@@ -10,6 +10,22 @@ $(document).ready(function() {
 
 var romans = [["I", "V"], ["X", "L"], ["C", "D"], ["M", ""]];
 
+var checker = function(inputString) {
+  var outputString = "";
+if (parseInt(inputString) > 3999) {
+  var multiple = Math.floor(parseInt(inputString)/ 3999);
+  var remainder = parseInt(inputString) % 3999;
+  for (i=0; i< multiple; i++){
+    outputString += "MMMCMXCIX + ";
+  }
+
+  outputString += converter(remainder.toString());
+  }
+  else {
+    outputString = converter(inputString);
+  }
+  return outputString;
+}
 var converter = function(number) {
   var inputArray = (number.split("")).reverse();
   var result= [];

@@ -68,6 +68,12 @@ _Program specifications:_
 * Input: 72
 * Output: LXXII
 
+16 If the number is greater than 3,999, the program will divide it into multiples of 3,999 plus remainder.
+* Input: 4101
+* Output: MMMCMXCIX + CII
+
+
+
 
 ## Setup/Installation Requirements
 
