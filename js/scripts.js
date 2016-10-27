@@ -8,11 +8,7 @@ $(document).ready(function() {
 });
 /////////////////
 
-var ones = ["I", "V"];
-var tens = ["X", "L"];
-var hundreds = ["C", "D"];
-var thousands = ["M", ""]
-var romans = [ones, tens, hundreds, thousands];
+var romans = [["I", "V"], ["X", "L"], ["C", "D"], ["M", ""]];
 
 var converter = function(number) {
   var inputArray = (number.split("")).reverse();
@@ -32,14 +28,14 @@ var replace = function(number, ind){
   else if (number === "5") {
     resultArray.push(romans[ind][1]);
   }
-  else if (number<9 && number>5) {
+  else if (number === "9") {
+    resultArray.push(romans[ind][0]+romans[ind+1][0]);
+  }
+  else if (number>5) {
     resultArray.push(romans[ind][1]);
     for (var i = 0; i< parseInt(number)%5 ; i++) {
       resultArray.push(romans[ind][0]);
     }
-  }
-  else if (number === "9") {
-    resultArray.push(romans[ind][0]+romans[ind+1][0]);
   }
   else {
     for (var i = 0; i< parseInt(number) ; i++) {
